@@ -3,10 +3,11 @@ import Foundation
 struct FileInfo: Identifiable {
     let id = UUID()
     let url: URL
+    let fileName: String
+    var content: String = ""
     
-    var fileName: String { url.lastPathComponent }
-    
-    var content: String {
-        (try? String(contentsOf: url, encoding: .utf8)) ?? ""
+    init(url: URL) {
+        self.url = url
+        self.fileName = url.lastPathComponent
     }
 }

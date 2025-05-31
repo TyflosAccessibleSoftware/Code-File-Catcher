@@ -67,6 +67,17 @@
         }
       }
     },
+    "Save as…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save as…"
+          }
+        }
+      }
+    },
     "Searching files…" : {
       "localizations" : {
         "en" : {

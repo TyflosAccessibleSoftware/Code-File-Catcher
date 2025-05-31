@@ -1,3 +1,4 @@
+import UniformTypeIdentifiers
 import SwiftUI
 import Foundation
 import AppKit
@@ -32,31 +33,40 @@ final class FileListViewModel: ObservableObject {
     
     func searchFiles() {
         guard let folder = selectedFolder else { return }
-        isSearching = true
-        files.removeAll()
-        aggregatedText = ""
-        
+        let selectedExtensionsCopy = selectedExtensions
+        DispatchQueue.main.async {
+            self.isSearching = true
+            self.files = []
+            self.aggregatedText = ""
+        }
         DispatchQueue.global(qos: .userInitiated).async {
             let fm = FileManager.default
-            var foundFiles: [FileInfo] = []
-            
+            var fileURLs: [URL] = []
             if let enumerator = fm.enumerator(at: folder, includingPropertiesForKeys: nil) {
                 for case let url as URL in enumerator {
-                    guard self.selectedExtensions.contains(url.pathExtension.lowercased().withDotPrefix) else { continue }
-                    foundFiles.append(FileInfo(url: url))
+                    let ext = url.pathExtension.lowercased().withDotPrefix
+                    guard selectedExtensionsCopy.contains(ext) else { continue }
+                    fileURLs.append(url)
                 }
             }
-            
-            var text = ""
-            for file in foundFiles {
-                text += "✏️ [\(file.fileName)]\n\n"
-                text += file.content + "\n\n"
-            }
-            
+            let fileInfos = fileURLs.map { FileInfo(url: $0) }
             DispatchQueue.main.async {
-                self.files = foundFiles
-                self.aggregatedText = text
-                self.isSearching = false
+                self.files = fileInfos
+            }
+            DispatchQueue.global(qos: .utility).async {
+                for file in fileInfos {
+                    let content = (try? String(contentsOf: file.url, encoding: .utf8)) ?? ""
+                    var codeFile = file
+                    codeFile.content = content
+                    DispatchQueue.main.async {
+                        self.files.append(codeFile)
+                        self.aggregatedText += "✏️ [\(codeFile.fileName)]\n\n\(codeFile.content)\n\n"
+                    }
+                    Thread.sleep(forTimeInterval: 0.01)
+                }
+                DispatchQueue.main.async {
+                    self.isSearching = false
+                }
             }
         }
     }
@@ -79,10 +89,9 @@ final class FileListViewModel: ObservableObject {
     
     func exportToTxt() {
         let savePanel = NSSavePanel()
-        savePanel.allowedFileTypes = ["txt"]
-        savePanel.nameFieldStringValue = "files_aggregated.txt"
-        savePanel.title = "Guardar como..."
-        
+        savePanel.allowedContentTypes = [.plainText]
+        savePanel.nameFieldStringValue = "allSourceCode.txt"
+        savePanel.title = String(localized: "Save as…")
         if savePanel.runModal() == .OK, let url = savePanel.url {
             try? aggregatedText.write(to: url, atomically: true, encoding: .utf8)
         }
