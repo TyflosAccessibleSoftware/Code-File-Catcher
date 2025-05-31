@@ -68,7 +68,20 @@
       }
     },
     "Searching files…" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Searching files…"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscando archivos…"
+          }
+        }
+      }
     },
     "Select folder" : {
       "extractionState" : "manual",
