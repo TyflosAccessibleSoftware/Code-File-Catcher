@@ -33,40 +33,34 @@ final class FileListViewModel: ObservableObject {
     
     func searchFiles() {
         guard let folder = selectedFolder else { return }
-        let selectedExtensionsCopy = selectedExtensions
-        DispatchQueue.main.async {
-            self.isSearching = true
-            self.files = []
-            self.aggregatedText = ""
-        }
+        self.isSearching = true
+        self.files = []
+        self.aggregatedText = ""
         DispatchQueue.global(qos: .userInitiated).async {
             let fm = FileManager.default
-            var fileURLs: [URL] = []
-            if let enumerator = fm.enumerator(at: folder, includingPropertiesForKeys: nil) {
+            var collectedFileInfos: [FileInfo] = []
+            var completeAggregatedText = ""
+            if let enumerator = fm.enumerator(at: folder, includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles, .skipsPackageDescendants]) {
                 for case let url as URL in enumerator {
-                    let ext = url.pathExtension.lowercased().withDotPrefix
-                    guard selectedExtensionsCopy.contains(ext) else { continue }
-                    fileURLs.append(url)
-                }
-            }
-            let fileInfos = fileURLs.map { FileInfo(url: $0) }
-            DispatchQueue.main.async {
-                self.files = fileInfos
-            }
-            DispatchQueue.global(qos: .utility).async {
-                for file in fileInfos {
-                    let content = (try? String(contentsOf: file.url, encoding: .utf8)) ?? ""
-                    var codeFile = file
-                    codeFile.content = content
-                    DispatchQueue.main.async {
-                        self.files.append(codeFile)
-                        self.aggregatedText += "✏️ [\(codeFile.fileName)]\n\n\(codeFile.content)\n\n"
+                    guard let resourceValues = try? url.resourceValues(forKeys: [.isRegularFileKey]),
+                          resourceValues.isRegularFile == true else {
+                        continue
                     }
-                    Thread.sleep(forTimeInterval: 0.01)
+                    let ext = "." + url.pathExtension.lowercased()
+                    if self.selectedExtensions.contains(ext) {
+                        if let content = try? String(contentsOf: url, encoding: .utf8) {
+                            var fileInfo = FileInfo(url: url)
+                            fileInfo.content = content
+                            collectedFileInfos.append(fileInfo)
+                            completeAggregatedText += "✏️ [\(fileInfo.fileName)]\n\n\(content)\n\n"
+                        }
+                    }
                 }
-                DispatchQueue.main.async {
-                    self.isSearching = false
-                }
+            }
+            DispatchQueue.main.async {
+                self.files = collectedFileInfos
+                self.aggregatedText = completeAggregatedText
+                self.isSearching = false
             }
         }
     }
@@ -79,7 +73,6 @@ final class FileListViewModel: ObservableObject {
         }
         aggregatedText = text
     }
-    
     
     func copyToClipboard() {
         let pb = NSPasteboard.general
