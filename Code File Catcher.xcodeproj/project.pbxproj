@@ -6,14 +6,85 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B284B29E2E4DAB9F00CCDD73 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B284B29D2E4DAB9E00CCDD73 /* Cocoa.framework */; };
+		B284B2A02E4DAB9F00CCDD73 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B284B29F2E4DAB9F00CCDD73 /* XcodeKit.framework */; };
+		B284B2AA2E4DAB9F00CCDD73 /* CodeCatcherExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B284B29B2E4DAB9E00CCDD73 /* CodeCatcherExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B284B2A82E4DAB9F00CCDD73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B27658832DE9DC6000A4F50C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B284B29A2E4DAB9E00CCDD73;
+			remoteInfo = CodeCatcherExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B284B2AB2E4DAB9F00CCDD73 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B284B2AA2E4DAB9F00CCDD73 /* CodeCatcherExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B276588B2DE9DC6000A4F50C /* Code File Catcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Code File Catcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B284B29B2E4DAB9E00CCDD73 /* CodeCatcherExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CodeCatcherExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B284B29D2E4DAB9E00CCDD73 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		B284B29F2E4DAB9F00CCDD73 /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B284B2AE2E4DAB9F00CCDD73 /* Exceptions for "CodeCatcherExtension" folder in "CodeCatcherExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B284B29A2E4DAB9E00CCDD73 /* CodeCatcherExtension */;
+		};
+		B284B2B12E4DACA000CCDD73 /* Exceptions for "Code File Catcher" folder in "CodeCatcherExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Code/Helpers/String+Helpers.swift",
+				Code/Models/FileInfo.swift,
+				Code/ViewModels/FileListViewModel.swift,
+				Code/Views/ButtonBarView.swift,
+				Code/Views/FileListView.swift,
+				Code/Views/FileTextView.swift,
+				Code/Views/FileTypeSelectorView.swift,
+				Code/Views/FolderSearcherView.swift,
+				Code/Views/SearchingNotificationView.swift,
+				Code/Views/WrapView.swift,
+				Resources/Localizable.xcstrings,
+			);
+			target = B284B29A2E4DAB9E00CCDD73 /* CodeCatcherExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B276588D2DE9DC6000A4F50C /* Code File Catcher */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B284B2B12E4DACA000CCDD73 /* Exceptions for "Code File Catcher" folder in "CodeCatcherExtension" target */,
+			);
 			path = "Code File Catcher";
+			sourceTree = "<group>";
+		};
+		B284B2A12E4DAB9F00CCDD73 /* CodeCatcherExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B284B2AE2E4DAB9F00CCDD73 /* Exceptions for "CodeCatcherExtension" folder in "CodeCatcherExtension" target */,
+			);
+			path = CodeCatcherExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +97,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B284B2982E4DAB9E00CCDD73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B284B29E2E4DAB9F00CCDD73 /* Cocoa.framework in Frameworks */,
+				B284B2A02E4DAB9F00CCDD73 /* XcodeKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				B276588D2DE9DC6000A4F50C /* Code File Catcher */,
+				B284B2A12E4DAB9F00CCDD73 /* CodeCatcherExtension */,
+				B284B29C2E4DAB9E00CCDD73 /* Frameworks */,
 				B276588C2DE9DC6000A4F50C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +123,18 @@
 			isa = PBXGroup;
 			children = (
 				B276588B2DE9DC6000A4F50C /* Code File Catcher.app */,
+				B284B29B2E4DAB9E00CCDD73 /* CodeCatcherExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B284B29C2E4DAB9E00CCDD73 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B284B29D2E4DAB9E00CCDD73 /* Cocoa.framework */,
+				B284B29F2E4DAB9F00CCDD73 /* XcodeKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,10 +147,12 @@
 				B27658872DE9DC6000A4F50C /* Sources */,
 				B27658882DE9DC6000A4F50C /* Frameworks */,
 				B27658892DE9DC6000A4F50C /* Resources */,
+				B284B2AB2E4DAB9F00CCDD73 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B284B2A92E4DAB9F00CCDD73 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				B276588D2DE9DC6000A4F50C /* Code File Catcher */,
@@ -70,6 +164,28 @@
 			productReference = B276588B2DE9DC6000A4F50C /* Code File Catcher.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B284B29A2E4DAB9E00CCDD73 /* CodeCatcherExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B284B2AF2E4DAB9F00CCDD73 /* Build configuration list for PBXNativeTarget "CodeCatcherExtension" */;
+			buildPhases = (
+				B284B2972E4DAB9E00CCDD73 /* Sources */,
+				B284B2982E4DAB9E00CCDD73 /* Frameworks */,
+				B284B2992E4DAB9E00CCDD73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B284B2A12E4DAB9F00CCDD73 /* CodeCatcherExtension */,
+			);
+			name = CodeCatcherExtension;
+			packageProductDependencies = (
+			);
+			productName = CodeCatcherExtension;
+			productReference = B284B29B2E4DAB9E00CCDD73 /* CodeCatcherExtension.appex */;
+			productType = "com.apple.product-type.xcode-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -77,11 +193,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1630;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					B276588A2DE9DC6000A4F50C = {
 						CreatedOnToolsVersion = 16.3;
+					};
+					B284B29A2E4DAB9E00CCDD73 = {
+						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
@@ -101,12 +220,20 @@
 			projectRoot = "";
 			targets = (
 				B276588A2DE9DC6000A4F50C /* Code File Catcher */,
+				B284B29A2E4DAB9E00CCDD73 /* CodeCatcherExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B27658892DE9DC6000A4F50C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B284B2992E4DAB9E00CCDD73 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -123,7 +250,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B284B2972E4DAB9E00CCDD73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B284B2A92E4DAB9F00CCDD73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B284B29A2E4DAB9E00CCDD73 /* CodeCatcherExtension */;
+			targetProxy = B284B2A82E4DAB9F00CCDD73 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B27658952DE9DC6100A4F50C /* Debug */ = {
@@ -308,6 +450,62 @@
 			};
 			name = Release;
 		};
+		B284B2AC2E4DAB9F00CCDD73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CodeCatcherExtension/CodeCatcherExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BEU2F6LPKF;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CodeCatcherExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CodeCatcherExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tyflosaccessiblesoftware.Code-File-Catcher.CodeCatcherExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B284B2AD2E4DAB9F00CCDD73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CodeCatcherExtension/CodeCatcherExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BEU2F6LPKF;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CodeCatcherExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CodeCatcherExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tyflosaccessiblesoftware.Code-File-Catcher.CodeCatcherExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -325,6 +523,15 @@
 			buildConfigurations = (
 				B27658982DE9DC6100A4F50C /* Debug */,
 				B27658992DE9DC6100A4F50C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B284B2AF2E4DAB9F00CCDD73 /* Build configuration list for PBXNativeTarget "CodeCatcherExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B284B2AC2E4DAB9F00CCDD73 /* Debug */,
+				B284B2AD2E4DAB9F00CCDD73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
