@@ -10,7 +10,9 @@ final class FileListViewModel: ObservableObject {
         ".h", ".c", ".m", ".cpp", ".hpp",
         ".htm", ".css", ".js",
         ".java", ".kt",
-        ".json", ".txt", ".md"
+        ".php",
+        ".json", ".txt", ".md",
+        ".strings", ".xml", ".*"
     ]
     @Published var selectedExtensions: Set<String> = []
     @Published var files: [FileInfo] = []
@@ -47,7 +49,7 @@ final class FileListViewModel: ObservableObject {
                         continue
                     }
                     let ext = "." + url.pathExtension.lowercased()
-                    if self.selectedExtensions.contains(ext) {
+                    if ext == ".*" || self.selectedExtensions.contains(ext) {
                         if let content = try? String(contentsOf: url, encoding: .utf8) {
                             var fileInfo = FileInfo(url: url)
                             fileInfo.content = content
