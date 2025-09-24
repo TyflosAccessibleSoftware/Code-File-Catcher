@@ -1,0 +1,15 @@
+{
+  "originHash" : "1937c53f8970e4be63683299cb80e7dc225faa655bf06ad7b943602fe4a24845",
+  "pins" : [
+    {
+      "identity" : "soundmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TyflosAccessibleSoftware/SoundManager",
+      "state" : {
+        "revision" : "ea2df5afa0f96c11620a83c4d6242f0c731ca118",
+        "version" : "1.6.0"
+      }
+    }
+  ],
+  "version" : 3
+}

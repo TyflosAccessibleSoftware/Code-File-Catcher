@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B26A9CD72E83D25A00D4C960 /* SoundManager in Frameworks */ = {isa = PBXBuildFile; productRef = B26A9CD62E83D25A00D4C960 /* SoundManager */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		B276588B2DE9DC6000A4F50C /* Code File Catcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Code File Catcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B26A9CD72E83D25A00D4C960 /* SoundManager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = "Code File Catcher";
 			packageProductDependencies = (
+				B26A9CD62E83D25A00D4C960 /* SoundManager */,
 			);
 			productName = "Code File Catcher";
 			productReference = B276588B2DE9DC6000A4F50C /* Code File Catcher.app */;
@@ -95,6 +101,9 @@
 			);
 			mainGroup = B27658822DE9DC6000A4F50C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B26A9CD52E83D25A00D4C960 /* XCRemoteSwiftPackageReference "SoundManager" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B276588C2DE9DC6000A4F50C /* Products */;
 			projectDirPath = "";
@@ -330,6 +339,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B26A9CD52E83D25A00D4C960 /* XCRemoteSwiftPackageReference "SoundManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TyflosAccessibleSoftware/SoundManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B26A9CD62E83D25A00D4C960 /* SoundManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B26A9CD52E83D25A00D4C960 /* XCRemoteSwiftPackageReference "SoundManager" */;
+			productName = SoundManager;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B27658832DE9DC6000A4F50C /* Project object */;
 }

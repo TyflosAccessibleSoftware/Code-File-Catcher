@@ -20,6 +20,7 @@ final class FileListViewModel: ObservableObject {
     @Published var isSearching: Bool = false
     
     func selectFolder() {
+        playSoundClick()
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
@@ -63,6 +64,7 @@ final class FileListViewModel: ObservableObject {
                 self.files = collectedFileInfos
                 self.aggregatedText = completeAggregatedText
                 self.isSearching = false
+                playSoundBell()
             }
         }
     }
@@ -77,12 +79,14 @@ final class FileListViewModel: ObservableObject {
     }
     
     func copyToClipboard() {
+        playSoundClick()
         let pb = NSPasteboard.general
         pb.clearContents()
         pb.setString(aggregatedText, forType: .string)
     }
     
     func exportToTxt() {
+        playSoundClick()
         let savePanel = NSSavePanel()
         savePanel.allowedContentTypes = [.plainText]
         savePanel.nameFieldStringValue = "allSourceCode.txt"
