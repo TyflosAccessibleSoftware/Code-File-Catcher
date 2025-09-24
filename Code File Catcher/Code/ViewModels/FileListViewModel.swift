@@ -4,6 +4,7 @@ import Foundation
 import AppKit
 
 final class FileListViewModel: ObservableObject {
+    @AppStorage("lastFolderPathKey") private var lastFolderPath: String = ""
     @Published var selectedFolder: URL?
     @Published var availableExtensions: [String] = [
         ".swift", ".plist", ".entitlements",
@@ -19,6 +20,12 @@ final class FileListViewModel: ObservableObject {
     @Published var aggregatedText: String = ""
     @Published var isSearching: Bool = false
     
+    init() {
+        if let lastUrl = URL(string: lastFolderPath) {
+            selectedFolder = lastUrl
+        }
+    }
+    
     func selectFolder() {
         playSoundClick()
         let panel = NSOpenPanel()
@@ -31,6 +38,7 @@ final class FileListViewModel: ObservableObject {
             selectedFolder = panel.urls.first
             files.removeAll()
             aggregatedText = ""
+            lastFolderPath = "\(selectedFolder!)"
         }
     }
     
