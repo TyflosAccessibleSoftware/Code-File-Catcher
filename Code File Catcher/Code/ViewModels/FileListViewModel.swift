@@ -15,7 +15,7 @@ final class FileListViewModel: ObservableObject {
         ".java", ".kt",
         ".php",
         ".json", ".txt", ".md",
-        ".strings", ".xml", ".*"
+        ".strings", ".xcstrings", .xml", ".*"
     ]
     @Published var selectedExtensions: Set<String> = []
     
