@@ -6,6 +6,7 @@ import AppKit
 @MainActor
 final class FileListViewModel: ObservableObject {
     @AppStorage("lastFolderBookmarkKey") private var lastFolderBookmarkData: Data?
+    @AppStorage("selectedExtensionsKey") private var selectedExtensionsStorage: Data = Data()
     @Published var selectedFolder: URL?
     @Published var availableExtensions: [String] = [
         ".swift", ".plist", ".entitlements",
@@ -16,7 +17,9 @@ final class FileListViewModel: ObservableObject {
         ".json", ".txt", ".md",
         ".strings", ".xcstrings", ".xml", ".*"
     ]
-    @Published var selectedExtensions: Set<String> = []
+    @Published var selectedExtensions: Set<String> = [] {
+        didSet { saveSelectedExtensionsToStorage() }
+    }
     @Published var files: [FileInfo] = []
     @Published var aggregatedText: String = ""
     @Published var isSearching: Bool = false
@@ -28,6 +31,7 @@ final class FileListViewModel: ObservableObject {
     
     init() {
         restoreSecurityScopedFolderIfAvailable()
+        loadSelectedExtensionsFromStorage()
     }
     
     deinit {
@@ -36,6 +40,18 @@ final class FileListViewModel: ObservableObject {
         }
     }
     
+    private func loadSelectedExtensionsFromStorage() {
+        guard !selectedExtensionsStorage.isEmpty else { return }
+        if let decoded = try? JSONDecoder().decode([String].self, from: selectedExtensionsStorage) {
+            selectedExtensions = Set(decoded)
+        }
+    }
+    
+    private func saveSelectedExtensionsToStorage() {
+        if let data = try? JSONEncoder().encode(Array(selectedExtensions)) {
+            selectedExtensionsStorage = data
+        }
+    }
     func selectFolder() {
         playSoundClick()
         let panel = NSOpenPanel()
