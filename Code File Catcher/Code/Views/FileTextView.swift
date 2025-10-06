@@ -2,12 +2,23 @@ import SwiftUI
 
 struct FileTextView: View {
     @ObservedObject var viewModel: FileListViewModel
+    
     var body: some View {
-        ScrollView {
-            Text(viewModel.aggregatedText)
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-        }
+        TextEditor(text: $viewModel.aggregatedText)
+            .font(.system(.body, design: .monospaced))
+            .textSelection(.enabled)
+            .textEditorStyle(.plain)
+            .scrollContentBackground(.hidden)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.vertical, 4)
+            .overlay {
+                if viewModel.aggregatedText.isEmpty {
+                    ContentUnavailableView("No content",
+                                           systemImage: "doc.text",
+                                           description: Text("Press “Get content” to collect files."))
+                    .accessibilityHidden(false)
+                }
+            }
     }
 }
 

@@ -1,6 +1,26 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld / %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        }
+      }
+    },
     "Copy" : {
       "localizations" : {
         "en" : {
@@ -67,6 +87,42 @@
         }
       }
     },
+    "No content" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin contenido"
+          }
+        }
+      }
+    },
+    "Press “Get content” to collect files." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulse en “Obtener” para capturar los ficheros."
+          }
+        }
+      }
+    },
+    "Processed %lld of %lld files" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Processed %1$lld of %2$lld files"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Procesado %1$lld de %2$lld ficheros"
+          }
+        }
+      }
+    },
     "Save as…" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -74,6 +130,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Save as…"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar como …"
           }
         }
       }
@@ -124,6 +186,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Selecciona la carpeta de tu proyecto"
+          }
+        }
+      }
+    },
+    "Stop current search" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parar la búsqueda"
           }
         }
       }
